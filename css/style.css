@@ -6,10 +6,15 @@
 	background-image: url(../images/chicago.jpg);
 }
 .home-c{
-    background: #000000a6;
+    background: ##19160ca6;
     color: white;
     padding: 5%;
 }
 .page{
 	padding:15%;
 }
+.navbar{
+	position: fixed;
+    width: 100%;
+}
+
