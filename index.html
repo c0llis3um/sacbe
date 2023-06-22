@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacbe Digital Technology & Marketing</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+<!-- Add this script tag in the head section of your HTML file, after the Bootstrap and jQuery scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Check if the user has a preferred color scheme set
+    var userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Function to toggle between dark and light themes
+    function toggleTheme() {
+      // Check if the body has the 'dark-theme' class
+      if ($('body').hasClass('dark-theme')) {
+        // Switch to light theme
+        $('body').removeClass('dark-theme');
+        // Update the button text
+        $('#theme-toggle').text('Dark Theme');
+      } else {
+        // Switch to dark theme
+        $('body').addClass('dark-theme');
+        // Update the button text
+        $('#theme-toggle').text('Light Theme');
+      }
+    }
+
+    // Add event listener to the theme toggle button
+    $('#theme-toggle').click(function() {
+      toggleTheme();
+    });
+
+    // Set the initial theme based on user preference or default to light theme
+    if (userPrefersDark) {
+      $('body').addClass('dark-theme');
+      $('#theme-toggle').text('Light Theme');
+    } else {
+      $('body').removeClass('dark-theme');
+      $('#theme-toggle').text('Dark Theme');
+    }
+  });
+</script>
+
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo-sacbe.jpg" width="150">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="team.html">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+
+
+  <!-- Home Page -->
+  <section id="home" class="page-home">
+    <div class="container home-c">
+      <img src="images/logo-sacbe.svg" width="250" alt="logo sacbe">
+      <h1>Digital Technology</h1>
+      <p class="h1">& Marketing</p>
+    </div>
+  </section>
+
+  <!-- About Page -->
+  <section id="about" class="page">
+    <div class="container">
+      <h2>About Page</h2>
+      <p>This is the about page of my website.</p>
+    </div>
+  </section>
+
+  <!-- Team Page -->
+  <section id="team" class="page">
+    <div class="container">
+      <h2>Team Page</h2>
+      <p>This is the team page of my website.</p>
+    </div>
+  </section>
+
+  <!-- Services Page -->
+  <section id="services" class="page">
+    <div class="container">
+      <h2>Services Page</h2>
+      <p>This is the services page of my website.</p>
+    </div>
+  </section>
+
+  <!-- Contact Page -->
+  <section id="contact" class="page">
+    <div class="container">
+      <h2>Contact Page</h2>
+      <p>This is the contact page of my website.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+      <p>&copy; 2023 My Website. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- jQuery and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+
+</html>

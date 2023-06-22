@@ -1,0 +1,12 @@
+.bg-dark{
+	background: black!important;
+}
+.page-home{
+	padding: 15%;
+	background-image: url(../images/chicago.jpg);
+}
+.home-c{
+    background: #000000a6;
+    color: white;
+    padding: 5%;
+}
