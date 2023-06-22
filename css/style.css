@@ -3,10 +3,13 @@
 }
 .page-home{
 	padding: 15%;
-	background-image: url(../images/chicago.jpg);
+	background-image: url(../images/chicago-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: top;
 }
 .home-c{
-    background: ##19160ca6;
+    background: #19160ca6;
     color: white;
     padding: 5%;
 }
@@ -17,4 +20,8 @@
 	position: fixed;
     width: 100%;
 }
-
+@media only screen and (max-width: 600px) {
+.page-home {
+    padding: 83% 11%;
+	}
+}
