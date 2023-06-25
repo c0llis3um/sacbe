@@ -1,3 +1,10 @@
+body{
+	color: white;
+}
+
+section{
+	background: #292614;
+}
 .bg-dark{
 	background: black!important;
 }
@@ -8,10 +15,29 @@
 	background-size: cover;
     background-position: top;
 }
+.defi{
+	background: url(../images/tanda.JPG);
+	background-size: cover;
+	padding: 15%;
+	color: white;
+}
+.aka{
+	background: url(../images/akademia.JPG);
+	background-size: cover;
+	padding: 15%;
+	color: white;
+}
 .home-c{
     background: #19160ca6;
     color: white;
     padding: 5%;
+}
+.home-c p{
+	text-align: center;
+	font-weight: bold;
+}
+.projects{
+	text-align: center;
 }
 .page{
 	padding:15%;
@@ -19,9 +45,14 @@
 .navbar{
 	position: fixed;
     width: 100%;
+    z-index: 1;
 }
 @media only screen and (max-width: 600px) {
 .page-home {
     padding: 83% 11%;
 	}
+}
+
+.defi h2{
+	font-weight: bold;
 }
