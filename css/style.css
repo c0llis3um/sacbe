@@ -69,7 +69,10 @@ section{
 h2{
 	font-weight: bold!important;
 }
-
+ul{
+	list-style: disc!important;
+    text-align: left;
+}
 @media only screen and (max-width: 600px) {
 .page-home {
     padding: 83% 11%;
