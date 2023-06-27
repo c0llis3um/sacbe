@@ -20,12 +20,30 @@ section{
 	background-size: cover;
 	padding: 15%;
 	color: white;
+
 }
 .aka{
 	background: url(../images/akademia.JPG);
 	background-size: cover;
 	padding: 15%;
 	color: white;
+
+}
+.maj{
+	background: url(../images/maj.JPG);
+	background-size: cover;
+	padding: 15%;
+	color: white;
+
+}
+.defi h2{
+	backdrop-filter: brightness(0.1);
+}
+.aka h2{
+	backdrop-filter: brightness(0.1);
+}
+.maj h2{
+	backdrop-filter: brightness(0.1);
 }
 .home-c{
     background: #19160ca6;
@@ -45,14 +63,19 @@ section{
 .navbar{
 	position: fixed;
     width: 100%;
-    z-index: 1;
+    z-index: 100;
 }
+
+h2{
+	font-weight: bold!important;
+}
+
 @media only screen and (max-width: 600px) {
 .page-home {
     padding: 83% 11%;
 	}
+	h1{
+		font-size: 34px!important;
+	}
 }
 
-.defi h2{
-	font-weight: bold;
-}
