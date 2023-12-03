@@ -3687,14 +3687,16 @@ header {
 	right:30px;
 }
 .nav-button {
-	float:right;
-	width:40px;
-	height:40px;
-	border:1px solid rgba(255,255,255,0.21);
-	padding:13px 6px 6px 6px;
-	position:relative;
-	margin-top:9px;
-	cursor:pointer;
+    float: right;
+    width: 58px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.21);
+    padding: 13px 6px 6px 6px;
+    position: relative;
+    margin-top: 9px;
+    color: white;
+    cursor: pointer;
+    margin-right: -41px;
 }
 .nav-button span {
 	float:left;
