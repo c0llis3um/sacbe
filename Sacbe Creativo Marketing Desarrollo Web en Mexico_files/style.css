@@ -839,7 +839,8 @@ nav li a:hover {
 	top:36%;
 }
 .hero-wrap-item h2 {
-	color:#000;
+	text-shadow: 4px 7px black;
+	color:white;
 	font-size:4rem;
 	text-transform:uppercase;
 	font-weight:600;
