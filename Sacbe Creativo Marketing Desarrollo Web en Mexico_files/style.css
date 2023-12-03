@@ -857,6 +857,7 @@ nav li a:hover {
 	font-weight:200;
 	letter-spacing:18px;
 	padding-left:6px;
+	background: black
 }
 .hero-wrap-item h3 a {
 	letter-spacing:2px;
@@ -869,17 +870,19 @@ nav li a:hover {
 	color:#fff;
 }
 .hero-scroll-link {
-	position: absolute;
-	bottom:50px;
-	left:50%;
-	width:40px;
-	height:40px;
-	line-height:40px;
-	color:#fff;
-	font-size:12px;
-	margin-left:-20px;
-	z-index:9;
-	border:1px solid rgba(255,255,255,0.21);
+background: black;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    /* width: 40px; */
+    /* height: 40px; */
+    padding: 1px 43px;
+    line-height: 40px;
+    color: #fff;
+    font-size: 12px;
+    margin-left: -20px;
+    z-index: 9;
+    border: 1px solid rgba(255,255,255,0.21);
 }
 .hero-wrap-image-slider-holder  , .slideshow-item  {
 	position:absolute;
