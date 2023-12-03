@@ -4031,6 +4031,9 @@ section {
     .parallax-item {
 	margin-bottom:190px;
 }
+.hero-scroll-link {
+	margin-left: -20%!important;
+}
 .num{
 	font-size:62px;
 }
@@ -4096,7 +4099,9 @@ p {
 	background-attachment: scroll !important;
 	-webkit-background-size:cover;
 	background-position:center;
-}
+
+    position: absolute;
+    top: -30px;
 }
 /*
      FILE ARCHIVED ON 19:26:07 Apr 15, 2023 AND RETRIEVED FROM THE
