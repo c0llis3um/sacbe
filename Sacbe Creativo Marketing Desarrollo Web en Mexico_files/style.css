@@ -663,7 +663,7 @@ header{
 	z-index:20;
 	height:80px;
 	width:100%;
-	background:#000;
+	background:none!
 	-webkit-transform: translate3d(0,0,0);
 }
 .fw-head {
@@ -822,6 +822,7 @@ nav li a:hover {
 	overflow:hidden;
 	z-index:2;
 	-webkit-transform: translate3d(0,0,0);
+	top: -75px
 }
 .hero-wrap .overlay {
 	z-index:2;
