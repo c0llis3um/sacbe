@@ -3947,6 +3947,22 @@ section {
 
 }
 @media only screen and  (max-width: 778px) {
+
+	.hero-scroll-link {
+    background: black;
+    position: absolute;
+    bottom: 50px;
+    left: 38%;
+    width: 250px;
+    /* top: 89%; */
+    /* height: 40px; */
+    padding: 1px 43px;
+    line-height: 40px;
+    border-radius: 16px;
+    color: #fff;
+    font-size: 12px;
+    margin-left: -20px;}
+    
 #portfolio_horizontal_container  , .resize-carousel-holder  {
   height: auto !important;
 }
