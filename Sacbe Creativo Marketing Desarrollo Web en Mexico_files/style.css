@@ -3952,7 +3952,7 @@ section {
     background: black;
     position: absolute;
     bottom: 50px;
-    left: 38%;
+    left: 30%;
     width: 250px;
     /* top: 89%; */
     /* height: 40px; */
@@ -3962,7 +3962,7 @@ section {
     color: #fff;
     font-size: 12px;
     margin-left: -20px;}
-    
+
 #portfolio_horizontal_container  , .resize-carousel-holder  {
   height: auto !important;
 }
