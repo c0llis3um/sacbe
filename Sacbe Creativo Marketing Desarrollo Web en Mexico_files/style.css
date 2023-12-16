@@ -769,7 +769,7 @@ nav li a {
 	font-size: 10px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	color: #fff;
+	color: #000;
 	font-family: 'Muli', sans-serif;
 	font-weight:600;
 	position:relative;
@@ -3952,7 +3952,7 @@ section {
     background: black;
     position: absolute;
     bottom: 50px;
-    left: 32%;
+    left: 32 %;
     width: 250px;
     /* top: 89%; */
     /* height: 40px; */
@@ -4096,7 +4096,8 @@ section {
     line-height: 32px;
 }
 .hero-wrap-item h2 {
-	font-size:28px;
+	font-size:33px;
+	text-shadow: 4px 4px black;
 }
 .hero-wrap-item h3 , .hero-wrap-item h3 a {
 	letter-spacing:8px;
