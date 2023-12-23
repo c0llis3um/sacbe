@@ -339,7 +339,36 @@ We see the future with creativity, empathy, professionalism, experience, and as 
 </div>
 </div>
 
-<div class="col-md-5"></div>
+<div id="contact" class="col-md-12">
+  <div>
+    <h3>Contact Us</h3>
+<form name="contact" method="POST" data-netlify="true">
+  <p>
+    <label>Your Name: <input type="text" name="name" /></label>
+  </p>
+  <p>
+    <label>Your Email: <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <label>Your Phone: <input type="phone" name="phone" /></label>
+  </p>
+  <p>
+    <label>Type Business: <select name="role[]" multiple>
+      <option value="leader">Freelancing</option>
+      <option value="follower">Enterprise</option>
+    </select></label>
+  </p>
+  <p>
+    <label>Message: <textarea name="message"></textarea></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
+
+    
+  </div>
+</div>
 </div>
 <!-- 3 end--><!-- custom-link-holder  -->
 

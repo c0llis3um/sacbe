@@ -700,6 +700,7 @@ header:before {
 .logo-holder img {
 	width:130px;
 	height:auto;
+
 }
 .dynamic-title {
 	display:none;
@@ -769,7 +770,8 @@ nav li a {
 	font-size: 10px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	color: #000;
+	color: #FFF;
+	text-shadow: 1px 1px black;
 	font-family: 'Muli', sans-serif;
 	font-weight:600;
 	position:relative;
