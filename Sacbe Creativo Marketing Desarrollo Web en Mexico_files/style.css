@@ -3693,11 +3693,12 @@ header {
     float: right;
     width: 58px;
     height: 40px;
-    border: 1px solid rgba(255,255,255,0.21);
+    border: 1px solid black;
     padding: 13px 6px 6px 6px;
     position: relative;
     margin-top: 9px;
     color: white;
+    text-shadow: 1px 1px black;
     cursor: pointer;
     margin-right: -41px;
 }
@@ -4053,7 +4054,7 @@ section {
 	margin-bottom:190px;
 }
 .hero-scroll-link {
-	margin-left: -20%!important;
+	margin-left: -32%!important;
 }
 .num{
 	font-size:62px;
