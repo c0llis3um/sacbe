@@ -1,470 +1,899 @@
-<!DOCTYPE html>
-
-<html lang="en" class="js csstransitions skrollr skrollr-desktop"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-	<title>Sacbe Digital Solutions and Web Development</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-   <meta name="robots" content="index, follow">
-   <meta name="keywords" content="tecnologia, marketing, mercadotecnia, desarrollo web, coding, programacion">
-   <meta name="description" content="Somos Sacbe Creativo ofrecemos soluciones en las areas de marketing y tecnologia para toda la republica mexicana.">
-       
-       <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://web.archive.org/web/20210625112739im_/https://www.sacbe.co/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://web.archive.org/web/20210625112739im_/https://www.sacbe.co/images/favicon-16x16.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-       <!--=============== css  ===============-->
-	<link href="./Sacbe Creativo Marketing Desarrollo Web en Mexico_files/reset.css" rel="stylesheet" type="text/css">
-	<link href="./Sacbe Creativo Marketing Desarrollo Web en Mexico_files/plugins.css" rel="stylesheet" type="text/css">
-	<link href="./Sacbe Creativo Marketing Desarrollo Web en Mexico_files/style.css" rel="stylesheet" type="text/css">
-	<!--=============== favicons ===============-->
-<link rel="stylesheet" href="./Sacbe Creativo Marketing Desarrollo Web en Mexico_files/font-awesome.min.css">
-      <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://web.archive.org/web/20210625112739/https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PR9QMRQ');</script>
-<!-- End Google Tag Manager --><!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="./Sacbe Creativo Marketing Desarrollo Web en Mexico_files/js"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-49249803-13');
-</script>
+                      <!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacbe | Futuristic Digital Solutions</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --accent-color: #4776E6;
+            --dark-bg: #12141d;
+            --dark-card: #1a1c2b;
+            --light-bg: #f8f9fa;
+            --light-card: #ffffff;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        body[data-bs-theme="light"] {
+            background-color: var(--light-bg);
+            color: #333;
+        }
+        
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: rgba(26, 28, 43, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        body[data-bs-theme="light"] .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 10px !important;
+            padding: 10px 25px;
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 10px !important;
+            padding: 10px 25px;
+        }
+        
+        .card {
+            background-color: var(--dark-card);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        body[data-bs-theme="light"] .card {
+            background-color: var(--light-card);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #12141d 0%, #1a1c2b 100%);
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body[data-bs-theme="light"] .hero-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(110,72,170,0.1)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .form-control {
+            border-radius: 10px !important;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: inherit;
+        }
+        
+        body[data-bs-theme="light"] .form-control {
+            background-color: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(110, 72, 170, 0.25);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-color);
+        }
+        
+        body[data-bs-theme="light"] .form-control:focus {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card {
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .tech-stack img {
+            filter: grayscale(100%) brightness(0.8);
+            transition: all 0.3s ease;
+            height: 40px;
+            margin: 10px 15px;
+        }
+        
+        .tech-stack img:hover {
+            filter: grayscale(0%) brightness(1);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
+        }
+        
+        .stats-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .stats-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+        }
+    </style>
 </head>
-<body style="">
- <!-- loader -->
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PR9QMRQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<div class="loader" style="display: none;">
-<div id="movingBallG">
-<div class="movingBallLineG"></div>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold gradient-text" href="#">
 
-<div class="movingBallG" id="movingBallG_1"></div>
-</div>
-</div>
-<!-- loader end --><!--================= main start ================-->
-
-<div id="main" style="opacity: 1;"><!--=============== header ===============-->
-<header><!-- header-inner  -->
-<div class="header-inner"><!-- header logo -->
-<div class="logo-holder"><a href="/"><img alt="" src="./Sacbe Creativo Marketing Desarrollo Web en Mexico_files/slogo.svg" style="width:80px;"></a></div>
-<!-- header logo end --><!-- mobile nav button -->
-
-<div class="nav-button-holder">
-<div class="nav-button vis-m">
-    Menu
-</div>
-</div>
-<!-- mobile nav button end --><!-- navigation  -->
-
-<div class="nav-holder">
-<nav>
-<ul>
-
-	<li><a href="#sec1">Solutions</a> <!-- Scroll navigation  --></li>
-  <li><a href="#we">We</a></li>
-	<li><a href="#contact">Contact</a></li>
-	<li><a href="//www.instagram.com/sacbe230" target="_blank"><i class="fab fa-instagram" style="font-size:12px;"></i></a></li>
-
-
-
-	<!--second level end-->
-</ul>
-</nav>
-</div>
-<!-- navigation  end --></div>
-<!-- header-inner  end --><!-- share button  -->
-
-
-<!-- share  end--></header>
-
-<!--=============== wrapper ===============-->
-
-<div id="wrapper">
-                <!-- content-holder  -->
-                <div class="content-holder">
-
-                    <!-- content  -->
-                    <div class="content full-height">
-                        <!-- Hero section   -->
-                        <div class="hero-wrap">
-                            <!-- Hero image   -->
-                            <div class="bg skrollable skrollable-between" data-bg="images/ocean.jpg" data-top-bottom="transform: translateY(300px);" data-bottom-top="transform: translateY(-300px);" style="background-image: url(images/18.jpg;); transform: translateY(66.473px);"></div>
-                            <!-- Hero image   end -->
-                            <div class="overlay"></div>
-                            <!-- Hero text   -->
-                            <div class="hero-wrap-item center-item">
-                                <h2> A Sea Of Digital Solutions</h2>
-                                <h3>Web + Digital Marketing</h3>
-                            </div>
-                            <!-- Hero text   end-->
-                            <a href="#sec1" class="hero-scroll-link custom-scroll-link skrollable skrollable-between" data-top-bottom="transform: translateY(50px);" data-bottom-top="transform: translateY(-50px);" style="transform: translateY(-15.2648px);">Learn More</a>
-                        </div>
-                        <!-- Hero section   end -->
+                <img src="sacbe-white.png" alt="logo" width="100"> 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#work">Work</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="ms-3 d-flex align-items-center">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="darkModeToggle" checked>
+                        <label class="form-check-label" for="darkModeToggle">
+                            <i class="fas fa-moon"></i>
+                        </label>
                     </div>
-                    <!-- content end -->
-<!-- content  -->
-
-<div class="content">
-<section id="sec1"><!-- section number   -->
-<div class="sect-subtitle right-align-dec skrollable skrollable-before" data-bottom-top="transform: translateY(-200px);" data-top-bottom="transform: translateY(200px);" style="transform: translateY(-200px);"><span>01</span></div>
-<!-- section number  end  --><!--  container  -->
-
-<div class="container">
-<div class="row">
-<div class="col-md-4">
-    
-    <!-- single slider  -->
-<div class="">
-<div class="">
-<div class="">
-    <!-- 1 --><!-- 1 end--><!-- 2 --><!-- 2 end--><!-- 3 --><!-- 3 end  -->
-
-
-
-<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 734px;"><div class="owl-item active" style="width: 367px; margin-right: 0px;"><div class="owl-stage-outer">
-    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1164px;">
-       
-       <div class="" style="width: 388px; margin-right: 0px;">
-        <h2 class="section-title">Digital <strong> Solutions</strong></h2>
-
+                    <button class="btn btn-primary ms-3">Get Started</button>
+                </div>
+            </div>
         </div>
-
-     </div>
-</div></div><div class="owl-item" style="width: 367px; margin-right: 0px;"><div class="owl-thumbs">
-
-</div></div></div></div>
-<div class=""><div class="owl-nav"><div class="owl-prev" style="display: none;">prev</div><div class="owl-next" style="display: none;">next</div></div><div class="" style=""><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div></div></div><div class="owl-thumbs"><div class="owl-thumb-item active">undefined</div><div class="owl-thumb-item">undefined</div></div></div>
-
-<div class="customNavigation ssn"> </div>
-</div>
-<!-- single slider  end --></div>
-</div>
-
-<div class="col-md-8" id="sec1"><!-- section title  -->
-
-<!-- section title  end -->
-
-<ul class="creat-list">
-  <li><a href="#">Web 3 - Blockchain</a></li>
-  <li><a href="#"> Web Development</a></li>
-  <li><a href="#">Computer Programming</a></li>
-  <li><a href="#">Digital Visual Imagery</a></li>
-  <li><a href="#">Digital Branding + Social Media Management</a></li>
-    <li><a href="#">Reports + Metrics</a></li>
-  
-</ul>
-
-  <p>
-Our web solution offerings encompass a comprehensive range of services tailored to meet the diverse needs of businesses in the digital landscape. From designing visually engaging and user-friendly websites to developing robust digital solutions, our team is dedicated to providing tailored solutions that align with your unique objectives. </p>
-
-
-
-<div class="process-box">
-<h3>Clients + Our Process</h3>
-<img src="images/clients.jpg" style="max-width:100%;">
-<ul class="creat-list">
-	<li><a href="">Research</a></li>
-	<li><a href="">Design &amp; Development</a></li>
-	<li><a href="">Testing and Delivery</a></li>
-</ul>
-
-
-</div>
-</div>
-</div>
-</div>
-<!--  container end  --></section>
-</div>
-<!-- content  end  --><!-- content   -->
-
-<div class="content dark-bg"><!-- section number   -->
-<div class="sect-subtitle left-align-dec skrollable skrollable-before" data-bottom-top="transform: translateY(200px);" data-top-bottom="transform: translateY(-200px);" style="transform: translateY(200px);"><span>02</span></div>
-<!-- section number   end --><!-- parallax image  -->
-
-<div class="parallax-inner">
-<div class="bg skrollable skrollable-before" data-bg="images/bk1.png" data-bottom-top="transform: translateY(-300px);" data-top-bottom="transform: translateY(300px);" style="background-image: url(&quot;images/bk1.png&quot;); transform: translateY(-300px);"></div>
-
-<div class="overlay"></div>
-</div>
-<!-- parallax image  end -->
-
-<section><!--  container  -->
-<div class="container">
-<div class="row">
-<div class="col-md-4">
-<h2 class="section-title">Our <strong> Statement</strong></h2>
-</div>
-
-<div class="col-md-8">
-<p>
-We have been in this adventure for more than two decades. Visualizing, communicating and creating ties through technology has generated that our solutions are current, in harmony and with style. 
-</p>
-<p>Portfolio</p>
-</div>
-</div>
-
-<div class="row" id="we">
-<div class="col-md-4"></div>
-
-<div class="col-md-8"><!-- facts   -->
-<div class="inline-facts-holder row"><!-- 1 -->
-<div class="inline-facts col-md-4 ">
-<div class="milestone-counter">
-<div class="stats animaper">
-<div class="num" data-content="461" data-num="461">461</div>
-</div>
-</div>
-
-<h6>Projects </h6>
-</div>
-<!-- 3 -->
-
-<div class="inline-facts col-md-4">
-<div class="milestone-counter">
-<div class="stats animaper">
-<div class="num" data-content="168" data-num="168">168</div>
-</div>
-</div>
-
-<h6>Satisfied Clients</h6>
-</div>
-<!-- 3 -->
-
-<div class="inline-facts col-md-4">
-<div class="milestone-counter">
-<div class="stats animaper">
-<div class="num" data-content="22222" data-num="22222">1265</div>
-</div>
-</div>
-
-<h6>Worked Hours</h6>
-</div>
-</div>
-<!-- facts   end --></div>
-</div>
-</div>
-<!--  container  end --></section>
-</div>
-<!-- content  end  --><!-- content   -->
-
-<div class="content">
-<section><!-- section number     -->
-<div class="sect-subtitle right-align-dec skrollable skrollable-before" data-bottom-top="transform: translateY(-200px);" data-top-bottom="transform: translateY(200px);" style="transform: translateY(-200px);"><span>03</span></div>
-<!-- section number   end --><!--  container  -->
-
-<div class="container" ><!--  section title -->
-<div class="row">
-<div class="col-md-12">
-<div>
-  
-  <a href="https://stupefied-thompson-9433fe.netlify.app/"><img src="Sacbe Creativo Marketing Desarrollo Web en Mexico_files/mobile.png" class="" style="width:280px;"></a><small><b>WEB 3</b> Defi Tanda Token and App in development.</small>
-</div>
-</div>
-</div>
-<!--  section title end  --><!--  Parallax items  --><!-- 1 -->
-
-<div class="row" >
-<div class="col-md-7">
-<div class="parallax-item left-direction">
-<div class="paralax-media">
-
-
-<div class="paralax-wrap"></div>
-</div>
-
-<div class="parallax-deck skrollable skrollable-before" data-bottom-top="transform: translateY(200px);" data-top-bottom="transform: translateY(-200px);" style="transform: translateY(200px);">
-<div class="parallax-deck-item">
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="col-md-5"></div>
-</div>
-<!-- 1 end-->
-
-<!-- 2 -->
-
-<div class="row">
-<div class="col-md-5"></div>
-
-<div class="col-md-7" >
-<div class="parallax-item right-direction">
-<div class="paralax-media">
-
-
-<div class="paralax-wrap"></div>
-</div>
-
-
-</div>
-</div>
-<!-- 2 end-->
-
-<!-- 3 -->
-
-<div class="row" >
-<div class="col-md-7">
-<div class="parallax-item left-direction">
-<div class="paralax-media">
-
-
-<div class="paralax-wrap"></div>
-</div>
-
-<div class="parallax-deck skrollable skrollable-before" data-bottom-top="transform: translateY(200px);" data-top-bottom="transform: translateY(-200px);" style="transform: translateY(200px);">
-<div class="parallax-deck-item">
-  
-  <div class="col-lg-12">  
-    <h3>Mission <strong>&amp; Vision</strong></h3>
-    <p>
-    We are creators of digital roads, each project is a new ship. We believe in the importance of traditions and this is how with innovation, design, technology and creativity in our services we achieve that connection.<br><br>
-The Mayas built the Sacbé sac ”(white) and“ bé ”(path) which means white path, this served to unite paths with monumental arches, and it is with this philosophy that we want to offer you solutions for your company.
-</p>
-
-
-<p>
-We see the future with creativity, empathy, professionalism, experience, and as an opportunity to build new paths. That is our vision, maintaining the origin, quality, and energy towards effective solutions and innovative service. 
-<br><br>
-</p>
-</div>
-
-
-
-</div>
-</div>
-</div>
-</div>
-
-<div id="contact" class="col-md-12">
-  <div>
-    <h2>Contact Us</h2>
-<form name="contact" method="POST" data-netlify="true" style="padding:2%;">
-  <p>
-    <label>Your Name: <input type="text" name="name" /></label>
-  </p>
-  <p>
-    <label>Your Email: <input type="email" name="email" /></label>
-  </p>
-  <p>
-    <label>Your Phone: <input type="phone" name="phone" /></label>
-  </p>
-  <p class="form-group">
-    <label>Type Business: <select name="role[]" multiple class="form-control">
-      <option value="leader">Freelancing</option>
-      <option value="follower">Enterprise</option>
-    </select></label>
-  </p>
-  <p>
-    <label>Message: <textarea name="message" style="height:200px;"></textarea></label>
-  </p>
-  <p>
-    <button type="submit" class="btn btn-primary">Send</button>
-  </p>
-</form>
-
-    
-  </div>
-</div>
-</div>
-<!-- 3 end--><!-- custom-link-holder  -->
-
-<div class="custom-link-holder"></div>
-<!-- custom-link-holder  end --></div>
-<!--  container  end --></div></section>
-</div>
-<!-- content end -->
-<!-- content footer-->
-
-<div class="height-emulator" style="height: 328px;"></div>
-
-<footer class="content-footer"><!--  container  -->
-<div class="container">
-<div class="row">
-<div class="col-md-6"><!-- Footer logo -->
-<div class="footer-item footer-logo"><a class="ajax" href="http://sacbe.us"><img alt="" src="./Sacbe Creativo Marketing Desarrollo Web en Mexico_files/logo-sacbe.jpg" style="width:130px;"></a>
-
-</div>
-<!-- Footer logo end --></div>
-<!-- Footer info -->
-
-<div class="col-md-2">
-<div class="footer-item">
-<h4 class="text-link">Dial</h4>
-
-<ul>
-	<li><a href="tel:+15176800024">USA (312) 772-6715</a></li>
-</ul>
-</div>
-</div>
-<!-- Footer info end--><!-- Footer info -->
-
-<div class="col-md-2">
-<div class="footer-item">
-<h4 class="text-link">Social</h4>
-
-<ul>
-
-
-    <li><a href="//www.instagram.com/sacbe230" target="_blank"><i class="fab fa-instagram" style="font-size:12px;"></i></a></li>
-</ul>
-</div>
-</div>
-<!-- Footer info--><!-- Footer info end-->
-
-<div class="col-md-2">
-<div class="footer-item">
-<h4 class="text-link"></h4>
-
-<ul>
-	<li><span>USA</li>
-
-</ul>
-</div>
-</div>
-<!-- Footer info end--></div>
-<!-- Footer copyright -->
-
-<div class="row">
-<div class="col-md-6"></div>
-
-<div class="col-md-6">
-<div class="footer-wrap"><span class="copyright">© 2023 Sacbe Co. </span> <span class="to-top">Go Top</span></div>
-</div>
-</div>
-<!-- Footer copyright end --></div>
-<!--  container  end --><!-- Hover animation  --><canvas class="particular" height="603" style="display: none;" width="1263"></canvas> <!-- Hover animation  end --></footer>
-<!-- content footer end --><!-- share  -->
-
-<div class="share-inner">
-<div class="share-container  isShare" data-share="[&#39;facebook&#39;,&#39;googleplus&#39;,&#39;twitter&#39;,&#39;linkedin&#39;]"><a href="https://web.archive.org/web/20230415192620/http://www.facebook.com/share.php?u=https%3A%2F%2Fwww.sacbe.co%2Fen.html%2F" title="Share this page on facebook" class="pop share-icon share-icon-facebook"></a><a href="https://web.archive.org/web/20230415192620/https://plusone.google.com/_/+1/confirm?hl=en&amp;url=https%3A%2F%2Fwww.sacbe.co%2Fen.html%2F" title="Share this page on googleplus" class="pop share-icon share-icon-googleplus"></a><a href="https://web.archive.org/web/20230415192620/https://twitter.com/share?via=in1.com&amp;text=Sacbe%20Creativo%20Marketing%20Desarrollo%20Web%20en%20Mexico" title="Share this page on twitter" class="pop share-icon share-icon-twitter"></a><a href="https://web.archive.org/web/20230415192620/http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.sacbe.co%2Fen.html%2F&amp;title=Sacbe%20Creativo%20Marketing%20Desarrollo%20Web%20en%20Mexico&amp;summary=Somos%20Sacbe%20Creativo%20ofrecemos%20soluciones%20en%20las%20areas%20de%20marketing%20y%20tecnologia%20para%20toda%20la%20republica%20mexicana.&amp;source=in1.com" title="Share this page on linkedin" class="pop share-icon share-icon-linkedin"></a></div>
-
-<div class="close-share"></div>
-</div>
-<!-- share end --></div>
-<!-- content-holder  end--></div>
-<!-- wrapper end --><!-- Fixed footer -->
-
-<!-- Header  title -->
-
-
-<!-- Header  title  end-->
-<!-- Fixed footer end-->
-
-
-</div>
-<!-- content-holder  end-->
-<!-- wrapper end -->
-<!-- Main end --><!--=============== scripts  ===============-->
-<script type="text/javascript" src="./Sacbe Creativo Marketing Desarrollo Web en Mexico_files/jquery.min.js.download"></script>
-<script type="text/javascript" src="./Sacbe Creativo Marketing Desarrollo Web en Mexico_files/plugins.js.download"></script>
-<script type="text/javascript" src="./Sacbe Creativo Marketing Desarrollo Web en Mexico_files/scripts.js.download"></script>
-
-</div></body></html>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h1 class="display-3 fw-bold mb-4">Building <span class="gradient-text">Digital Futures</span></h1>
+                    <p class="lead mb-4">We craft immersive web experiences that push boundaries and drive results. Our futuristic approach combines cutting-edge technology with stunning design.</p>
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-primary">Explore Our Work</button>
+                        <button class="btn btn-outline-primary">Learn More</button>
+                    </div>
+                    <div class="d-flex mt-4">
+                        <div class="stats-item me-4">
+                            <h3 class="fw-bold mb-0">250+</h3>
+                            <small>Projects Completed</small>
+                        </div>
+                        <div class="stats-item me-4">
+                            <h3 class="fw-bold mb-0">98%</h3>
+                            <small>Client Satisfaction</small>
+                        </div>
+                        <div class="stats-item">
+                            <h3 class="fw-bold mb-0">5.0</h3>
+                            <small>Average Rating</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="position-relative">
+                        <div class="position-absolute top-0 start-0 translate-middle bg-primary rounded-circle p-2" style="width: 50px; height: 50px;"></div>
+                        <div class="position-absolute bottom-0 end-0 translate-middle bg-secondary rounded-circle p-2" style="width: 30px; height: 30px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center mb-5">
+                    <p class="text-muted">TRUSTED BY INNOVATIVE COMPANIES WORLDWIDE</p>
+                </div>
+                <div class="col-12">
+                    <div class="d-flex flex-wrap justify-content-center align-items-center tech-stack">
+                        <img src="logo-new-plan-inc.svg" alt="Client Logo" width="150">
+                        <img src="logo-stellar-broadband.svg" alt="Client Logo">
+                        <img src="Los-Tres-Amigos-Logo.webp" alt="Client Logo">
+                        <img src="logo.svg" alt="Client Logo">
+
+                        <img src="bona.jpg" alt="Client Logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-dark">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <span class="text-primary fw-bold">OUR SERVICES</span>
+                    <h2 class="fw-bold mb-3">Transformative <span class="gradient-text">Digital Solutions</span></h2>
+                    <p class="lead">We offer a comprehensive suite of services designed to elevate your digital presence and drive business growth.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4 class="fw-bold">Web Development</h4>
+                        <p>Custom, responsive websites built with the latest technologies to ensure speed, security, and scalability.</p>
+                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4 class="fw-bold">App Development</h4>
+                        <p>Native and cross-platform mobile applications that deliver seamless user experiences across all devices.</p>
+                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="fw-bold">Digital Marketing</h4>
+                        <p>Data-driven strategies to increase your online visibility, engagement, and conversion rates.</p>
+                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h4 class="fw-bold">UI/UX Design</h4>
+                        <p>Beautiful, intuitive interfaces designed to enhance user satisfaction and improve product usability.</p>
+                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4 class="fw-bold">AI Integration</h4>
+                        <p>Leverage artificial intelligence to automate processes, gain insights, and enhance customer experiences.</p>
+                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h4 class="fw-bold">Cloud Solutions</h4>
+                        <p>Scalable cloud infrastructure and services to optimize performance, security, and cost-efficiency.</p>
+                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Chart Widget -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                    <h2 class="fw-bold mb-4">Data-Driven <span class="gradient-text">Results</span></h2>
+                    <p class="mb-4">Our approach combines creativity with analytics to deliver measurable outcomes. See how we've helped businesses grow through our comprehensive digital solutions.</p>
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <div class="card p-3">
+                                <h3 class="fw-bold mb-0 text-primary">+300%</h3>
+                                <small>Average Traffic Increase</small>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="card p-3">
+                                <h3 class="fw-bold mb-0 text-primary">+150%</h3>
+                                <small>Conversion Rate Boost</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card p-3">
+                                <h3 class="fw-bold mb-0 text-primary">-40%</h3>
+                                <small>Bounce Rate Reduction</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card p-3">
+                                <h3 class="fw-bold mb-0 text-primary">4.8/5</h3>
+                                <small>User Satisfaction Score</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card p-4">
+                        <canvas id="performanceChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="py-5 bg-dark">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <span class="text-primary fw-bold">OUR PORTFOLIO</span>
+                    <h2 class="fw-bold mb-3">Featured <span class="gradient-text">Projects</span></h2>
+                    <p class="lead">Explore our recent work that showcases our expertise across various industries and technologies.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card overflow-hidden">
+                        <img src="https://via.placeholder.com/600x400?text=Project+1" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-2">Web Development</span>
+                            <h5 class="card-title">FinTech Dashboard</h5>
+                            <p class="card-text">A comprehensive financial dashboard with real-time analytics and AI-powered insights.</p>
+                            <a href="#" class="text-primary text-decoration-none">View Case Study <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card overflow-hidden">
+                        <img src="https://via.placeholder.com/600x400?text=Project+2" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-2">Mobile App</span>
+                            <h5 class="card-title">Health & Wellness App</h5>
+                            <p class="card-text">A personalized fitness and nutrition app with AR workout guidance and meal planning.</p>
+                            <a href="#" class="text-primary text-decoration-none">View Case Study <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card overflow-hidden">
+                        <img src="https://via.placeholder.com/600x400?text=Project+3" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-2">E-Commerce</span>
+                            <h5 class="card-title">Luxury Fashion Platform</h5>
+                            <p class="card-text">An immersive shopping experience with virtual try-on and AI styling recommendations.</p>
+                            <a href="#" class="text-primary text-decoration-none">View Case Study <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5" data-aos="fade-up">
+                <button class="btn btn-outline-primary">View All Projects</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <span class="text-primary fw-bold">TESTIMONIALS</span>
+                    <h2 class="fw-bold mb-3">What Our <span class="gradient-text">Clients Say</span></h2>
+                    <p class="lead">Don't just take our word for it. Here's what our clients have to say about working with us.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="card p-4">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="card h-100 p-4 text-center">
+                                    <img src="https://via.placeholder.com/100x100" class="rounded-circle mx-auto mb-3" alt="Client 1">
+                                    <div class="mb-3">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    </div>
+                                    <p class="mb-3">"Sacbe transformed our online presence completely. Their team delivered beyond our expectations with innovative solutions."</p>
+                                    <h6 class="fw-bold mb-1">Sarah Johnson</h6>
+                                    <small class="text-muted">CEO, TechForward</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 p-4 text-center">
+                                    <img src="https://via.placeholder.com/100x100" class="rounded-circle mx-auto mb-3" alt="Client 2">
+                                    <div class="mb-3">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    </div>
+                                    <p class="mb-3">"The mobile app they developed for us has been a game-changer. User engagement has skyrocketed since launch."</p>
+                                    <h6 class="fw-bold mb-1">Michael Chen</h6>
+                                    <small class="text-muted">Product Manager, HealthPlus</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 p-4 text-center">
+                                    <img src="https://via.placeholder.com/100x100" class="rounded-circle mx-auto mb-3" alt="Client 3">
+                                    <div class="mb-3">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star-half-alt text-warning"></i>
+                                    </div>
+                                    <p class="mb-3">"Their digital marketing strategy delivered measurable results within weeks. Our conversion rates have never been better."</p>
+                                    <h6 class="fw-bold mb-1">David Rodriguez</h6>
+                                    <small class="text-muted">Marketing Director, LuxStyle</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-dark">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                    <span class="text-primary fw-bold">ABOUT US</span>
+                    <h2 class="fw-bold mb-4">Pioneering <span class="gradient-text">Digital Innovation</span></h2>
+                    <p class="mb-4">Founded in 2015, Sacbe has been at the forefront of digital transformation, helping businesses of all sizes navigate the evolving technological landscape.</p>
+                    <p>Our team of 50+ experts combines technical excellence with creative vision to deliver solutions that are not just functional but truly transformative.</p>
+                    <div class="row mt-4">
+                        <div class="col-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+                                    <i class="fas fa-users text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0">50+</h5>
+                                    <small>Experts Team</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+                                    <i class="fas fa-globe-americas text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0">15+</h5>
+                                    <small>Countries Served</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+                                    <i class="fas fa-trophy text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0">25+</h5>
+                                    <small>Industry Awards</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+                                    <i class="fas fa-smile text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0">100%</h5>
+                                    <small>Client Retention</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card overflow-hidden">
+                        <img src="https://via.placeholder.com/600x400?text=Our+Team" class="card-img-top" alt="Our Team">
+                        <div class="card-body">
+                            <h5 class="card-title">Our Mission</h5>
+                            <p class="card-text">To empower businesses through innovative digital solutions that drive growth, enhance user experiences, and future-proof their operations.</p>
+                            <button class="btn btn-primary">Meet Our Team</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card p-4 p-md-5">
+                        <div class="row">
+                            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                                <h2 class="fw-bold mb-4">Ready to <span class="gradient-text">Transform</span> Your Business?</h2>
+                                <p class="mb-4">Let's discuss how we can help you achieve your digital goals. Fill out the form or contact us directly.</p>
+                                <div class="mb-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                                            <i class="fas fa-envelope text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-0">Email Us</h6>
+                                            <small>contact@Sacbe.com</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                                            <i class="fas fa-phone-alt text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-0">Call Us</h6>
+                                            <small>+1 (555) 123-4567</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                                            <i class="fas fa-map-marker-alt text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-0">Visit Us</h6>
+                                            <small>123 Tech Avenue, Silicon Valley, CA 94025</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="social-icons">
+                                    <a href="#" class="text-decoration-none me-3"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="text-decoration-none me-3"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="text-decoration-none me-3"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#" class="text-decoration-none me-3"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="text-decoration-none"><i class="fab fa-dribbble"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6" data-aos="fade-left">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="service" class="form-label">Service Interested In</label>
+                                        <select class="form-select" id="service">
+                                            <option selected disabled>Select a service</option>
+                                            <option>Web Development</option>
+                                            <option>App Development</option>
+                                            <option>Digital Marketing</option>
+                                            <option>UI/UX Design</option>
+                                            <option>AI Integration</option>
+                                            <option>Cloud Solutions</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control" id="message" rows="3" placeholder="Tell us about your project"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100">Submit Request</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <h2 class="fw-bold mb-3">Stay Updated with <span class="gradient-text">Our Insights</span></h2>
+                    <p class="mb-4">Subscribe to our newsletter for the latest trends, tips, and case studies in digital innovation.</p>
+                    <form class="row g-2 justify-content-center">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                        </div>
+                        <div class="col-12">
+                            <small class="text-muted">We respect your privacy. Unsubscribe at any time.</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <a class="navbar-brand fw-bold gradient-text mb-3 d-inline-block" href="#">Sacbe</a>
+                    <p class="mb-3">Pushing the boundaries of digital innovation to create transformative experiences that drive business success.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-decoration-none me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-decoration-none me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-decoration-none me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-decoration-none me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="fw-bold mb-3">Services</h5>
+                    <ul class="list-unstyled">
+
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Web Development</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">App Development</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Digital Marketing</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">UI/UX Design</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">AI Integration</a></li>
+                        <li><a href="#" class="text-decoration-none">Cloud Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="fw-bold mb-3">Company</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Our Team</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Blog</a></li>
+                        <li><a href="#" class="text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="fw-bold mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Case Studies</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Whitepapers</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Webinars</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">FAQ</a></li>
+                        <li><a href="#" class="text-decoration-none">Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="fw-bold mb-3">Legal</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Terms of Service</a></li>
+                        <li><a href="#" class="text-decoration-none">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 Sacbe. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> by Sacbe Team</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary btn-lg rounded-circle back-to-top" style="position: fixed; bottom: 20px; right: 20px; display: none;">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const htmlElement = document.documentElement;
+
+        // Check for saved user preference
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            htmlElement.setAttribute('data-bs-theme', 'light');
+            darkModeToggle.checked = false;
+        }
+
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                htmlElement.setAttribute('data-bs-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.setAttribute('data-bs-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        // 3D Chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'Client Growth',
+                    data: [45, 78, 66, 95],
+                    backgroundColor: 'rgba(110, 72, 170, 0.8)',
+                    borderColor: 'rgba(110, 72, 170, 1)',
+                    borderWidth: 1,
+                    borderRadius: 10
+                }, {
+                    label: 'Revenue Increase',
+                    data: [30, 52, 74, 88],
+                    backgroundColor: 'rgba(71, 118, 230, 0.8)',
+                    borderColor: 'rgba(71, 118, 230, 1)',
+                    borderWidth: 1,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Annual Performance Metrics',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#e0e0e0'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#e0e0e0'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Update chart theme when dark/light mode changes
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                performanceChart.options.scales.x.grid.color = 'rgba(255, 255, 255, 0.1)';
+                performanceChart.options.scales.y.grid.color = 'rgba(255, 255, 255, 0.1)';
+                performanceChart.options.scales.x.ticks.color = '#e0e0e0';
+                performanceChart.options.scales.y.ticks.color = '#e0e0e0';
+            } else {
+                performanceChart.options.scales.x.grid.color = 'rgba(0, 0, 0, 0.1)';
+                performanceChart.options.scales.y.grid.color = 'rgba(0, 0, 0, 0.1)';
+                performanceChart.options.scales.x.ticks.color = '#333';
+                performanceChart.options.scales.y.ticks.color = '#333';
+            }
+            performanceChart.update();
+        });
+    </script>
+</body>
+</html>
