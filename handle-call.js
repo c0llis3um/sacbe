@@ -1,4 +1,4 @@
-// /netlify/functions/handle-call.js
+// /handle-call.js
 const axios = require('axios');
 
 exports.handler = async (event) => {
@@ -33,9 +33,9 @@ async function generateAIResponse(callerNumber) {
         model: "deepseek-chat",
         messages: [{
           role: "user",
-          content: `You're NexusWeb's AI receptionist. Call from ${callerNumber}. 
+          content: `You're Sacbe's AI receptionist. Call from ${callerNumber}. 
           Respond in 1 sentence under 15 words like: 
-          "Thanks for calling NexusWeb! How can we help?"`
+          "Thanks for calling Sacbe! How can we help?"`
         }],
         temperature: 0.7
       },
@@ -49,7 +49,7 @@ async function generateAIResponse(callerNumber) {
     return response.data.choices[0].message.content;
   } catch (error) {
     console.error('DeepSeek error:', error);
-    return "Thanks for calling NexusWeb. Connecting you now...";
+    return "Thanks for calling Sacbe. Connecting you now...";
   }
 }
 
