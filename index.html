@@ -638,6 +638,31 @@
         }
         .footer-bottom p { font-size: .75rem; margin: 0; max-width: none; }
 
+        /* ── FORM STATES ── */
+        .submit-success {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .submit-success i {
+            display: block;
+            font-size: 2.25rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+        }
+        .submit-success h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: .4rem;
+        }
+        .submit-success p { color: var(--muted); font-size: .875rem; }
+
+        .form-error {
+            font-size: .78rem;
+            color: #f87171;
+            margin-top: .75rem;
+            text-align: center;
+        }
+
         /* ── BACK TO TOP ── */
         .back-to-top {
             position: fixed;
@@ -956,7 +981,13 @@
                     </div>
                 </div>
                 <div>
-                    <form name="contact" method="POST" data-netlify="true">
+                    <form id="contactForm" name="contact" method="POST" data-netlify="true">
+                        <!-- required for Netlify AJAX -->
+                        <input type="hidden" name="form-name" value="contact">
+                        <!-- Web3Forms: replace value with your key from web3forms.com -->
+                        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                        <input type="hidden" name="subject" value="New Contact — Sacbe Website">
+                        <input type="hidden" name="from_name" value="Sacbe Contact Form">
                         <div class="form-grp">
                             <label class="form-lbl">Full Name</label>
                             <input type="text" name="name" class="form-fld" placeholder="Your name">
@@ -984,7 +1015,8 @@
                             <label class="form-lbl">Message</label>
                             <textarea name="message" class="form-fld" rows="4" placeholder="Tell us about your project"></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">Submit Request</button>
+                        <button type="submit" class="btn-submit" id="submitBtn">Submit Request</button>
+                        <div id="formError" class="form-error" style="display:none;"></div>
                     </form>
                 </div>
             </div>
@@ -1068,6 +1100,52 @@
         btt.addEventListener('click', e => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Contact form — sends to Web3Forms (email) + Netlify (storage)
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn   = document.getElementById('submitBtn');
+        const formError   = document.getElementById('formError');
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            submitBtn.disabled   = true;
+            submitBtn.textContent = 'Sending…';
+            formError.style.display = 'none';
+
+            const formData = new FormData(contactForm);
+
+            try {
+                // Send email via Web3Forms
+                const w3Res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                const w3Json = await w3Res.json();
+
+                if (!w3Json.success) throw new Error(w3Json.message || 'Submission failed');
+
+                // Store in Netlify (AJAX, fire-and-forget)
+                const netlifyBody = new URLSearchParams(formData).toString();
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: netlifyBody
+                }).catch(() => {});
+
+                // Show success state
+                contactForm.innerHTML = `
+                    <div class="submit-success">
+                        <i class="fas fa-check-circle"></i>
+                        <h4>Message Sent!</h4>
+                        <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+                    </div>`;
+            } catch (err) {
+                submitBtn.disabled    = false;
+                submitBtn.textContent = 'Submit Request';
+                formError.textContent = 'Something went wrong. Please try again or email us directly.';
+                formError.style.display = 'block';
+            }
         });
 
         // Parallax orbs on scroll
