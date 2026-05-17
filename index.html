@@ -112,6 +112,26 @@
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28241,240,245,.7%29' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
 
+        /* mobile nav menu */
+        @media (max-width: 991px) {
+            #navLinks {
+                width: 100%;
+                background: rgba(8,8,10,.97);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid var(--border);
+                padding: 1rem 0.25rem;
+                margin-top: .75rem;
+            }
+            #navLinks .nav-link {
+                padding: .75rem 0.5rem !important;
+                border-bottom: 1px solid var(--border);
+                font-size: .95rem;
+            }
+            #navLinks li:last-child .nav-link { border-bottom: none; }
+            [data-theme="light"] #navLinks { background: rgba(247,246,252,.97); }
+        }
+
         /* theme toggle */
         .theme-toggle {
             background: none;
@@ -710,27 +730,30 @@
 
     <!-- Navbar -->
     <nav class="navbar" id="mainNav">
-        <div class="container d-flex align-items-center justify-content-between">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap">
+            <!-- Logo -->
             <a href="#" class="navbar-brand p-0">
                 <img src="sacbe-white.png" alt="Sacbe">
             </a>
-            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <!-- Right controls: theme toggle + hamburger (always visible) -->
+            <div class="d-flex align-items-center gap-2">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i id="themeIcon" class="fas fa-sun"></i>
+                </button>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <!-- Collapsible links -->
             <div class="collapse navbar-collapse" id="navLinks">
-                <ul class="navbar-nav mx-auto d-flex gap-4 flex-row" style="list-style:none;margin:0;padding:0;">
+                <ul class="navbar-nav mx-auto flex-lg-row gap-lg-4" style="list-style:none;margin:0;padding:0;">
                     <li><a class="nav-link active" href="#home">Home</a></li>
                     <li><a class="nav-link" href="#services">Services</a></li>
                     <li><a class="nav-link" href="#work">Work</a></li>
                     <li><a class="nav-link" href="#about">About</a></li>
                     <li><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i id="themeIcon" class="fas fa-sun"></i>
-                </button>
-                <a href="#contact" class="btn-cta d-none d-lg-inline-block">Get Started</a>
+                <a href="#contact" class="btn-cta d-none d-lg-inline-block ms-3">Get Started</a>
             </div>
         </div>
     </nav>
@@ -1091,6 +1114,14 @@
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 40);
         }, { passive: true });
+
+        // Close mobile menu when a link is tapped
+        const navLinksEl = document.getElementById('navLinks');
+        document.querySelectorAll('#navLinks .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                bootstrap.Collapse.getOrCreateInstance(navLinksEl).hide();
+            });
+        });
 
         // Back to top
         const btt = document.getElementById('backToTop');
