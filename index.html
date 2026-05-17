@@ -1,857 +1,1083 @@
-                      <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sacbe | Web AI Digital Solutions Chicago</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B00C1LP280"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-B00C1LP280');
-</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B00C1LP280"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B00C1LP280');
+    </script>
+
     <style>
         :root {
-            --primary-color: #6e48aa;
-            --secondary-color: #9d50bb;
-            --accent-color: #4776E6;
-            --dark-bg: #12141d;
-            --dark-card: #1a1c2b;
-            --light-bg: #f8f9fa;
-            --light-card: #ffffff;
+            --accent:       #7c3aed;
+            --accent-light: #a78bfa;
+            --bg:           #08080a;
+            --surface:      #111114;
+            --surface-2:    #18181c;
+            --border:       rgba(255,255,255,0.06);
+            --text:         #f1f0f5;
+            --muted:        #6b6880;
         }
-        
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: var(--dark-bg);
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: all 0.3s ease;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        body[data-bs-theme="light"] {
-            background-color: var(--light-bg);
-            color: #333;
+
+        /* subtle noise texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.35;
         }
-        
+
+        /* ── NAVBAR ── */
         .navbar {
-            backdrop-filter: blur(10px);
-            background-color: rgba(26, 28, 43, 0.8);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: padding .4s ease, background .4s ease, border-color .4s ease;
         }
-        
-        body[data-bs-theme="light"] .navbar {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        .navbar.scrolled {
+            padding: 1rem 0;
+            background: rgba(8,8,10,.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom-color: var(--border);
         }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        .navbar-brand img { height: 56px; transition: filter .3s; }
+        .nav-link {
+            color: var(--muted) !important;
+            font-size: .85rem;
+            font-weight: 500;
+            letter-spacing: .02em;
+            padding: .4rem 0 !important;
+            transition: color .2s;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--text) !important; }
+        .btn-cta {
+            background: var(--accent);
+            color: #fff;
             border: none;
-            border-radius: 10px !important;
-            padding: 10px 25px;
+            border-radius: 8px;
+            padding: .55rem 1.25rem;
+            font-size: .85rem;
+            font-weight: 500;
+            letter-spacing: .02em;
+            text-decoration: none;
+            transition: opacity .2s, transform .2s;
         }
-        
-        .btn-outline-primary {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            border-radius: 10px !important;
-            padding: 10px 25px;
+        .btn-cta:hover { opacity: .85; transform: translateY(-1px); color: #fff; }
+        .navbar-toggler {
+            border: 1px solid var(--border);
+            padding: .3rem .6rem;
         }
-        
-        .card {
-            background-color: var(--dark-card);
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28241,240,245,.7%29' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
-        
-        body[data-bs-theme="light"] .card {
-            background-color: var(--light-card);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        /* theme toggle */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            width: 36px; height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: .8rem;
+            transition: border-color .2s, color .2s;
+            flex-shrink: 0;
         }
-        
-        .card:hover {
-            transform: translateY(-5px);
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent-light); }
+
+        /* ── LIGHT MODE ── */
+        [data-theme="light"] {
+            --bg:        #f7f6fc;
+            --surface:   #edecea;
+            --surface-2: #e2e1ea;
+            --border:    rgba(0,0,0,0.09);
+            --text:      #0d0c14;
+            --muted:     #7a7590;
         }
-        
-        .hero-section {
-            background: linear-gradient(135deg, #12141d 0%, #6a00ff 100%);
-            padding: 120px 0;
+
+        [data-theme="light"] body { background-color: var(--bg); color: var(--text); }
+
+        [data-theme="light"] .navbar.scrolled {
+            background: rgba(247,246,252,.88);
+        }
+
+        [data-theme="light"] .navbar-brand img { filter: brightness(0); }
+
+        [data-theme="light"] .client-logos img {
+            filter: brightness(0);
+            opacity: .25;
+        }
+        [data-theme="light"] .client-logos img:hover { opacity: .65; }
+
+        [data-theme="light"] .work-placeholder {
+            color: rgba(0,0,0,.05);
+            background: var(--surface-2);
+        }
+
+        [data-theme="light"] .work-inner {
+            background: linear-gradient(to top, rgba(237,236,234,.95) 0%, rgba(237,236,234,.3) 60%, transparent 100%);
+        }
+
+        [data-theme="light"] .work-inner h5 { color: var(--text); }
+        [data-theme="light"] .work-inner p { color: rgba(13,12,20,.45); }
+
+        [data-theme="light"] .testimonial-item blockquote { color: rgba(13,12,20,.65); }
+
+        [data-theme="light"] .footer-links a { color: rgba(13,12,20,.35); }
+        [data-theme="light"] .footer-links a:hover { color: var(--text); }
+
+        [data-theme="light"] .footer-bottom p { color: var(--muted); }
+
+        [data-theme="light"] .orb { opacity: .12; }
+
+        [data-theme="light"] .about-orb { opacity: .04; }
+
+        [data-theme="light"] .work-item > img { opacity: .45; }
+        [data-theme="light"] .work-item:hover > img { opacity: .65; }
+
+        /* ── HERO ── */
+        #home {
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             overflow: hidden;
         }
-        
-        body[data-bs-theme="light"] .hero-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        }
-        
-        .hero-section::before {
-            content: "";
+        .hero-bg { position: absolute; inset: 0; z-index: 0; }
+        .orb {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(110,72,170,0.1)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>') repeat;
-            opacity: 0.3;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: .18;
+            will-change: transform;
         }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .orb-1 { width: 600px; height: 600px; background: #7c3aed; top: -100px; right: -100px; }
+        .orb-2 { width: 400px; height: 400px; background: #4776e6; bottom: -50px; left: -50px; }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 8rem 0 6rem;
+        }
+        .label {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+        .label::before {
+            content: '';
+            display: inline-block;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .hero-title {
+            font-size: clamp(3.2rem, 9vw, 7.5rem);
+            font-weight: 900;
+            line-height: 1.0;
+            letter-spacing: -.035em;
+            margin-bottom: 1.5rem;
+        }
+        .hero-title .hi { color: var(--accent-light); }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 440px;
+            margin-bottom: 2.5rem;
+            line-height: 1.75;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .5rem;
+            color: var(--muted);
+            font-size: .65rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+        .scroll-indicator span {
+            width: 1px; height: 48px;
+            background: linear-gradient(to bottom, var(--muted), transparent);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+        @keyframes scrollLine {
+            0%   { transform: scaleY(0); transform-origin: top; }
+            49%  { transform: scaleY(1); transform-origin: top; }
+            51%  { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        /* ── SECTIONS ── */
+        section { padding: 7rem 0; }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1.25rem;
+        }
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.25rem);
+            font-weight: 800;
+            letter-spacing: -.025em;
+            line-height: 1.1;
             margin-bottom: 1rem;
         }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-img.card-img-top {
-    width: 150px;
+        .section-desc { color: var(--muted); max-width: 520px; line-height: 1.75; font-size: .9rem; }
 
-}
-        .form-control {
-            border-radius: 10px !important;
-            padding: 12px 15px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: inherit;
+        /* ── CLIENTS ── */
+        #clients {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
-        
-        body[data-bs-theme="light"] .form-control {
-            background-color: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+        .client-label {
+            font-size: .68rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 2rem;
         }
-        
-        .form-control:focus {
-            box-shadow: 0 0 0 0.25rem rgba(110, 72, 170, 0.25);
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: var(--primary-color);
+        .client-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem 3.5rem;
         }
-        
-        body[data-bs-theme="light"] .form-control:focus {
-            background-color: rgba(0, 0, 0, 0.05);
+        .client-logos img {
+            height: 26px;
+            filter: brightness(0) invert(1);
+            opacity: .22;
+            transition: opacity .3s;
         }
-        
-        .service-card {
-            border-left: 4px solid var(--primary-color);
+        .client-logos img:hover { opacity: .65; }
+
+        /* ── SERVICES ── */
+        #services { background: var(--bg); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid var(--border);
         }
-        
-        .tech-stack img {
-            filter: grayscale(100%) brightness(0.8);
-            transition: all 0.3s ease;
-            height: 40px;
-            margin: 10px 15px;
+        .service-item {
+            padding: 2.5rem;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: background .3s;
         }
-        
-        .tech-stack img:hover {
-            filter: grayscale(0%) brightness(1);
+        .service-item:nth-child(3n) { border-right: none; }
+        .service-item:nth-last-child(-n+3) { border-bottom: none; }
+        .service-item:hover { background: var(--surface); }
+
+        .service-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: rgba(124,58,237,.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: .95rem;
+            color: var(--accent-light);
         }
-        
-        .floating {
-            animation: floating 6s ease-in-out infinite;
+        .service-item h4 {
+            font-size: .95rem;
+            font-weight: 600;
+            margin-bottom: .5rem;
+            letter-spacing: -.01em;
         }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        .service-item p {
+            font-size: .83rem;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 1rem;
         }
-        
-        .glow {
-            text-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
+        .service-link {
+            font-size: .78rem;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            transition: gap .2s;
         }
-        
-        .stats-item {
+        .service-link:hover { gap: .6rem; color: var(--accent-light); }
+
+        /* ── WORK ── */
+        #work { background: var(--surface); }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 1px;
+            background: var(--border);
+        }
+        .work-item {
             position: relative;
-            padding-left: 30px;
+            background: var(--surface);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
         }
-        
-        .stats-item::before {
-            content: "";
+        .work-placeholder {
             position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 15px;
-            height: 15px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(255,255,255,.04);
+            letter-spacing: -.05em;
+            background: var(--surface-2);
+        }
+        .work-item > img {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: .28;
+            transition: opacity .4s, transform .6s;
+        }
+        .work-item:hover > img { opacity: .5; transform: scale(1.04); }
+
+        .work-inner {
+            position: absolute;
+            inset: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(to top, rgba(8,8,10,.92) 0%, rgba(8,8,10,.2) 60%, transparent 100%);
+        }
+        .work-badge {
+            display: inline-block;
+            font-size: .62rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: .4rem;
+        }
+        .work-inner h5 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: .2rem;
+            letter-spacing: -.01em;
+        }
+        .work-inner p {
+            font-size: .78rem;
+            color: rgba(241,240,245,.45);
+            margin-bottom: .75rem;
+        }
+        .work-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            font-size: .78rem;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity .3s, transform .3s;
+        }
+        .work-item:hover .work-arrow { opacity: 1; transform: translateY(0); }
+
+        /* ── TESTIMONIALS ── */
+        #testimonials { background: var(--bg); }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 1px;
+            background: var(--border);
+        }
+        .testimonial-item {
+            background: var(--bg);
+            padding: 2.5rem;
+        }
+        .stars { display: flex; gap: 3px; margin-bottom: 1.25rem; }
+        .stars i { font-size: .72rem; color: var(--accent-light); }
+        .testimonial-item blockquote {
+            font-size: .88rem;
+            line-height: 1.75;
+            color: rgba(241,240,245,.65);
+            margin-bottom: 1.5rem;
+        }
+        .t-author strong { display: block; font-size: .83rem; font-weight: 600; }
+        .t-author small { font-size: .73rem; color: var(--muted); }
+
+        /* ── ABOUT ── */
+        #about { background: var(--surface); position: relative; overflow: hidden; }
+        .about-orb {
+            position: absolute;
+            width: 500px; height: 500px;
             border-radius: 50%;
+            background: var(--accent);
+            filter: blur(150px);
+            opacity: .06;
+            top: -100px; right: -100px;
+            pointer-events: none;
+        }
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 1px;
+            background: var(--border);
+            margin-bottom: 4rem;
+        }
+        .stat-item { background: var(--surface); padding: 2.5rem; }
+        .stat-item .num {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -.04em;
+            line-height: 1;
+            margin-bottom: .5rem;
+        }
+        .stat-item p { font-size: .78rem; color: var(--muted); margin: 0; }
+
+        /* ── CONTACT ── */
+        #contact { background: var(--bg); }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .contact-info h2 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -.025em;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+        .contact-info > p { color: var(--muted); font-size: .875rem; margin-bottom: 2rem; }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .c-icon {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .78rem;
+            color: var(--accent-light);
+            flex-shrink: 0;
+        }
+        .contact-detail h6 { font-size: .78rem; font-weight: 600; margin-bottom: .15rem; }
+        .contact-detail small { font-size: .75rem; color: var(--muted); }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            text-decoration: none;
+            font-size: .85rem;
+            transition: border-color .2s, color .2s;
+        }
+        .social-link:hover { border-color: var(--accent); color: var(--accent-light); }
+
+        .form-grp { margin-bottom: 1.25rem; }
+        .form-lbl {
+            display: block;
+            font-size: .72rem;
+            font-weight: 500;
+            letter-spacing: .04em;
+            color: var(--muted);
+            margin-bottom: .45rem;
+        }
+        .form-fld {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: .75rem 1rem;
+            color: var(--text);
+            font-family: inherit;
+            font-size: .875rem;
+            outline: none;
+            transition: border-color .2s;
+        }
+        .form-fld:focus { border-color: var(--accent); }
+        .form-fld::placeholder { color: rgba(107,104,128,.5); }
+        select.form-fld option { background: var(--surface); }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: .875rem;
+            font-family: inherit;
+            font-size: .875rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: .5rem;
+            transition: opacity .2s, transform .2s;
+        }
+        .btn-submit:hover { opacity: .85; transform: translateY(-1px); }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer-brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            margin-bottom: .75rem;
+        }
+        footer p { font-size: .83rem; color: var(--muted); max-width: 300px; }
+        .footer-heading {
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: .55rem; }
+        .footer-links a {
+            font-size: .83rem;
+            color: rgba(241,240,245,.38);
+            text-decoration: none;
+            transition: color .2s;
+        }
+        .footer-links a:hover { color: var(--text); }
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+        }
+        .footer-bottom p { font-size: .75rem; margin: 0; max-width: none; }
+
+        /* ── BACK TO TOP ── */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            width: 42px; height: 42px;
+            border-radius: 10px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: .8rem;
+            text-decoration: none;
+            transition: border-color .2s, transform .2s;
+            z-index: 999;
+        }
+        .back-to-top:hover { border-color: var(--accent); color: var(--accent-light); transform: translateY(-2px); }
+        .back-to-top.show { display: flex; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 992px) {
+            .services-grid { grid-template-columns: repeat(2,1fr); }
+            .service-item:nth-child(3n) { border-right: 1px solid var(--border); }
+            .service-item:nth-child(2n) { border-right: none; }
+            .service-item:nth-last-child(-n+3) { border-bottom: 1px solid var(--border); }
+            .service-item:nth-last-child(-n+2) { border-bottom: none; }
+        }
+        @media (max-width: 768px) {
+            .work-grid { grid-template-columns: 1fr; }
+            .testimonial-grid { grid-template-columns: 1fr; }
+            .stats-strip { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-item { border-right: none !important; }
+            .service-item:nth-last-child(1) { border-bottom: none; }
+        }
+        @media (max-width: 576px) {
+            section { padding: 5rem 0; }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container">
-            <a class="navbar-brand fw-bold gradient-text" href="#">
 
-                <img src="sacbe-white.png" alt="logo" width="60"> 
+    <!-- Navbar -->
+    <nav class="navbar" id="mainNav">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="#" class="navbar-brand p-0">
+                <img src="sacbe-white.png" alt="Sacbe">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#work">Work</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+            <div class="collapse navbar-collapse" id="navLinks">
+                <ul class="navbar-nav mx-auto d-flex gap-4 flex-row" style="list-style:none;margin:0;padding:0;">
+                    <li><a class="nav-link active" href="#home">Home</a></li>
+                    <li><a class="nav-link" href="#services">Services</a></li>
+                    <li><a class="nav-link" href="#work">Work</a></li>
+                    <li><a class="nav-link" href="#about">About</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
-                <div class="ms-3 d-flex align-items-center ">
-                    <div class="form-check form-switch d-none">
-                        <input class="form-check-input" type="checkbox" id="darkModeToggle" checked>
-                        <label class="form-check-label" for="darkModeToggle">
-                            <i class="fas fa-moon"></i>
-                        </label>
-                    </div>
-                    <a class="btn btn-primary ms-3" href="#contact">Get Started</a>
-                </div>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i id="themeIcon" class="fas fa-sun"></i>
+                </button>
+                <a href="#contact" class="btn-cta d-none d-lg-inline-block">Get Started</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
+    <!-- Hero -->
+    <section id="home">
+        <div class="hero-bg">
+            <div class="orb orb-1" id="orb1"></div>
+            <div class="orb orb-2" id="orb2"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="label">Chicago-based Digital Studio</div>
+            <h1 class="hero-title">
+                Building<br>
+                <span class="hi">Digital</span><br>
+                Futures
+            </h1>
+            <p class="hero-sub">We craft immersive Web &amp; AI experiences that push boundaries and drive results for ambitious companies.</p>
+            <a href="#work" class="btn-cta">Explore Our Work</a>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Clients -->
+    <section id="clients">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12 text-center" data-aos="fade-right">
-                    <h1 class="display-3 fw-bold mb-4 mt-4">Building <span class="gradient-text">Digital Futures</span></h1>
-                    <p class="lead mb-4">We craft immersive Web AI experiences that push boundaries and drive results.</p>
-                    <div class="d-flex gap-3">
-                        <a class="btn btn-primary" href="#work" style="margin:auto;">Explore Our Work</a>
-
-                    </div>
-
-
+            <p class="client-label text-center">Trusted by innovative companies</p>
+            <div class="client-logos">
+                <img src="logo-new-plan-inc.svg" alt="New Plan Inc">
+                <img src="logo-stellar-broadband.svg" alt="Stellar Broadband">
+                <img src="Los-Tres-Amigos-Logo.webp" alt="Los Tres Amigos">
+                <img src="logo.svg" alt="Client">
+                <img src="bona.jpg" alt="Bona">
             </div>
         </div>
     </section>
 
-    <!-- Clients Section -->
-    <section class="py-5">
+    <!-- Services -->
+    <section id="services">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center mb-5">
-                    <p class="text-muted">TRUSTED BY INNOVATIVE COMPANIES WORLDWIDE</p>
+            <div class="row mb-5" data-aos="fade-up">
+                <div class="col-lg-5">
+                    <div class="section-label">Our Services</div>
+                    <h2 class="section-title">Transformative<br>Digital Solutions</h2>
                 </div>
-                <div class="col-12">
-                    <div class="d-flex flex-wrap justify-content-center align-items-center tech-stack">
-                        <img src="logo-new-plan-inc.svg" alt="Client Logo" width="150">
-                        <img src="logo-stellar-broadband.svg" alt="Client Logo">
-                        <img src="Los-Tres-Amigos-Logo.webp" alt="Client Logo">
-                        <img src="logo.svg" alt="Client Logo">
-
-                        <img src="bona.jpg" alt="Client Logo">
-                    </div>
-                </div>
-                    <div class="d-flex mt-4 d-none" style="width: 300px;margin: auto;">
-                        <div class="stats-item me-4">
-                            <h3 class="fw-bold mb-0">250+</h3>
-                            <small>Projects Completed</small>
-                        </div>
-                        <div class="stats-item me-4">
-                            <h3 class="fw-bold mb-0">98%</h3>
-                            <small>Client Satisfaction</small>
-                        </div>
-                        <div class="stats-item">
-                            <h3 class="fw-bold mb-0">5.0</h3>
-                            <small>Average Rating</small>
-                        </div>
-                    </div>
+                <div class="col-lg-6 offset-lg-1 d-flex align-items-end">
+                    <p class="section-desc">A comprehensive suite of services designed to elevate your digital presence and drive business growth.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-5 bg-dark">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <span class="text-primary fw-bold">OUR SERVICES</span>
-                    <h2 class="fw-bold mb-3">Transformative <span class="gradient-text">Digital Solutions</span></h2>
-                    <p class="lead">We offer a comprehensive suite of services designed to elevate your digital presence and drive business growth.</p>
+            <div class="services-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <h4>Web Development</h4>
+                    <p>Custom, responsive websites built with the latest technologies for speed, security, and scalability.</p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 p-4 service-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h4 class="fw-bold">Web Development</h4>
-                        <p>Custom, responsive websites built with the latest technologies to ensure speed, security, and scalability.</p>
-                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
-                    </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-cube"></i></div>
+                    <h4>Web3 Development</h4>
+                    <p>Secure, scalable crypto solutions — from wallets to DeFi platforms, powered by blockchain innovation.</p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 p-4 service-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h4 class="fw-bold">Web3 Development</h4>
-                        <p>We develop secure, scalable Web3 crypto solutions—from wallets to DeFi platforms—powered by blockchain innovation and user-centric design.</p>
-                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
-                    </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>Digital Marketing</h4>
+                    <p>Data-driven strategies to increase your online visibility, engagement, and conversion rates.</p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100 p-4 service-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h4 class="fw-bold">Digital Marketing</h4>
-                        <p>Data-driven strategies to increase your online visibility, engagement, and conversion rates.</p>
-                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
-                    </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h4>UI/UX Design</h4>
+                    <p>Beautiful, intuitive interfaces designed to enhance user satisfaction and improve product usability.</p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 p-4 service-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h4 class="fw-bold">UI/UX Design</h4>
-                        <p>Beautiful, intuitive interfaces designed to enhance user satisfaction and improve product usability.</p>
-                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
-                    </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
+                    <h4>AI Integration</h4>
+                    <p>Leverage artificial intelligence to automate processes, gain insights, and enhance customer experiences.</p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 p-4 service-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h4 class="fw-bold">AI Integration</h4>
-                        <p>Leverage artificial intelligence to automate processes, gain insights, and enhance customer experiences.</p>
-                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100 p-4 service-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <h4 class="fw-bold">Digital Design</h4>
-                        <p>Digital Branding, photography, video, video editing, and more.</p>
-                        <a href="#" class="text-primary text-decoration-none">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
-                    </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-camera"></i></div>
+                    <h4>Digital Design</h4>
+                    <p>Digital branding, photography, video production, and editing for a complete brand identity.</p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3D Chart Widget -->
-    <section class="py-5 d-none">
+    <!-- Work -->
+    <section id="work">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                    <h2 class="fw-bold mb-4">Data-Driven <span class="gradient-text">Results</span></h2>
-                    <p class="mb-4">Our approach combines creativity with analytics to deliver measurable outcomes. See how we've helped businesses grow through our comprehensive digital solutions.</p>
-                    <div class="row">
-                        <div class="col-6 mb-3">
-                            <div class="card p-3">
-                                <h3 class="fw-bold mb-0 text-primary">+300%</h3>
-                                <small>Average Traffic Increase</small>
-                            </div>
-                        </div>
-                        <div class="col-6 mb-3">
-                            <div class="card p-3">
-                                <h3 class="fw-bold mb-0 text-primary">+150%</h3>
-                                <small>Conversion Rate Boost</small>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="card p-3">
-                                <h3 class="fw-bold mb-0 text-primary">-40%</h3>
-                                <small>Bounce Rate Reduction</small>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="card p-3">
-                                <h3 class="fw-bold mb-0 text-primary">4.8/5</h3>
-                                <small>User Satisfaction Score</small>
-                            </div>
-                        </div>
+            <div class="row mb-5" data-aos="fade-up">
+                <div class="col-lg-5">
+                    <div class="section-label">Our Portfolio</div>
+                    <h2 class="section-title">Featured<br>Projects</h2>
+                </div>
+                <div class="col-lg-6 offset-lg-1 d-flex align-items-end">
+                    <p class="section-desc">Recent work showcasing our expertise across industries and technologies.</p>
+                </div>
+            </div>
+            <div class="work-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="work-item">
+                    <div class="work-placeholder">WWDM</div>
+                    <div class="work-inner">
+                        <span class="work-badge">Web Development</span>
+                        <h5>AI Coin</h5>
+                        <p>Numismatic portal with AI-powered history insights.</p>
+                        <a href="https://52e5rv6p.modx.dev/wwn/" class="work-arrow" target="_blank">View project <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="card p-4">
-                        <canvas id="performanceChart" height="300"></canvas>
+                <div class="work-item">
+                    <img src="https://divimx.netlify.app/images/divi-logo.png" alt="DIVI">
+                    <div class="work-inner">
+                        <span class="work-badge">Web &amp; Mobile App</span>
+                        <h5>DIVI</h5>
+                        <p>Digital web signage for enterprises.</p>
+                        <a href="https://divimx.netlify.app/" class="work-arrow" target="_blank">View project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <img src="https://defitanda.netlify.app/media/tlogo.png" alt="XRP Wallet">
+                    <div class="work-inner">
+                        <span class="work-badge">Web3</span>
+                        <h5>XRP Xanam Wallet Analyzer</h5>
+                        <p>Web3 extension for wallet charts and live prices.</p>
+                        <a href="https://defitanda.netlify.app/xumm" class="work-arrow" target="_blank">View project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <img src="logo-new-plan-inc.svg" alt="New Plan Inc">
+                    <div class="work-inner">
+                        <span class="work-badge">Web</span>
+                        <h5>New Plan Inc</h5>
+                        <p>Resident portal with support and vacancy management.</p>
+                        <a href="#" class="work-arrow">View project <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Work Section -->
-    <section id="work" class="py-5 bg-dark">
+    <!-- Testimonials -->
+    <section id="testimonials">
         <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <span class="text-primary fw-bold">OUR PORTFOLIO</span>
-                    <h2 class="fw-bold mb-3">Featured <span class="gradient-text">Projects</span></h2>
-                    <p class="lead">Explore our recent work that showcases our expertise across various industries and technologies.</p>
+            <div class="row mb-5" data-aos="fade-up">
+                <div class="col-lg-5">
+                    <div class="section-label">Testimonials</div>
+                    <h2 class="section-title">What Our<br>Clients Say</h2>
                 </div>
             </div>
-            <div class="row g-4">
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card overflow-hidden">
-                        <h2>WWDM</h2>
-                        <div class="card-body">
-                            <span class="badge bg-primary mb-2">Web Development</span>
-                            <h5 class="card-title">AI Coin</h5>
-                            <p class="card-text"> Numismatic online portal AI-powered history insights.</p>
-                            <a href="https://52e5rv6p.modx.dev/wwn/" class="text-primary text-decoration-none">View Case Study <i class="fas fa-arrow-right ms-1"></i></a>
-                        </div>
+            <div class="testimonial-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-item">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <blockquote>"Sacbe transformed our online presence completely. Their team delivered beyond our expectations with innovative solutions."</blockquote>
+                    <div class="t-author">
+                        <strong>Randy Gelb</strong>
+                        <small>New Plan Inc</small>
                     </div>
                 </div>
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card overflow-hidden">
-                        <img src="https://divimx.netlify.app/images/divi-logo.png" class="card-img-top" alt="Project 2">
-                        <div class="card-body">
-                            <span class="badge bg-primary mb-2">Web & Mobile App</span>
-                            <h5 class="card-title">DIVI</h5>
-                            <p class="card-text">Digital Web Signage for enterprises.</p>
-                            <a href="https://divimx.netlify.app/" class="text-primary text-decoration-none">View Case Study <i class="fas fa-arrow-right ms-1"></i></a>
-                        </div>
+                <div class="testimonial-item">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <blockquote>"The mobile app they developed has been a game-changer. User engagement has skyrocketed since launch."</blockquote>
+                    <div class="t-author">
+                        <strong>Uriel Maciel</strong>
+                        <small>Manager, Casa Tequila</small>
                     </div>
                 </div>
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card overflow-hidden">
-                        <img src="https://defitanda.netlify.app/media/tlogo.png" class="card-img-top" alt="Project 3">
-                        <div class="card-body">
-                            <span class="badge bg-primary mb-2">Web3</span>
-                            <h5 class="card-title">XRP Xanam Wallet Analyzer</h5>
-                            <p class="card-text">A web3 extention for Xanam wallet charts, prices, and more.</p>
-                            <a href="https://defitanda.netlify.app/xumm" class="text-primary text-decoration-none">View Case Study <i class="fas fa-arrow-right ms-1"></i></a>
-                        </div>
+                <div class="testimonial-item">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                     </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card overflow-hidden">
-                        <img src="logo-new-plan-inc.svg" class="card-img-top" alt="Project 3">
-                        <div class="card-body">
-                            <span class="badge bg-primary mb-2">Web</span>
-                            <h5 class="card-title">New Plan Inc</h5>
-                            <p class="card-text">Web portal, support for residents, and vacancies.</p>
-                            <a href="#" class="text-primary text-decoration-none">View Case Study <i class="fas fa-arrow-right ms-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <span class="text-primary fw-bold">TESTIMONIALS</span>
-                    <h2 class="fw-bold mb-3">What Our <span class="gradient-text">Clients Say</span></h2>
-                    <p class="lead">Don't just take our word for it. Here's what our clients have to say about working with us.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12" data-aos="fade-up">
-                    <div class="card p-4">
-                        <div class="row g-4">
-                            <div class="col-md-4">
-                                <div class="card h-100 p-4 text-center">
-
-                                    <div class="mb-3">
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                    </div>
-                                    <p class="mb-3">"Sacbe transformed our online presence completely. Their team delivered beyond our expectations with innovative solutions."</p>
-                                    <h6 class="fw-bold mb-1">Randy Gelb</h6>
-                                    <small class="text-muted">New Plan Inc</small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card h-100 p-4 text-center">
-
-                                    <div class="mb-3">
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                    </div>
-                                    <p class="mb-3">"The mobile app they developed for us has been a game-changer. User engagement has skyrocketed since launch."</p>
-                                    <h6 class="fw-bold mb-1">Uriel Maciel</h6>
-                                    <small class="text-muted">Manager, Casa Tequila</small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card h-100 p-4 text-center">
-
-                                    <div class="mb-3">
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star-half-alt text-warning"></i>
-                                    </div>
-                                    <p class="mb-3">"Their digital marketing strategy delivered measurable results within weeks. Our conversion rates have never been better."</p>
-                                    <h6 class="fw-bold mb-1">Arnulfo Ramirez</h6>
-                                    <small class="text-muted">Owner Director, Los Tres Amigos Co</small>
-                                </div>
-                            </div>
-                        </div>
+                    <blockquote>"Their digital marketing strategy delivered measurable results within weeks. Our conversion rates have never been better."</blockquote>
+                    <div class="t-author">
+                        <strong>Arnulfo Ramirez</strong>
+                        <small>Owner Director, Los Tres Amigos Co</small>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-5 bg-dark" style="background: linear-gradient(135deg, #12141d 0%, #6a00ff 100%);">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                    <span class="text-primary fw-bold">ABOUT US</span>
-                    <h2 class="fw-bold mb-4">Pioneering <span class="gradient-text">Digital Innovation</span></h2>
-                    <p class="mb-4">Founded in 2015, Sacbe has been at the forefront of digital transformation, helping businesses of all sizes navigate the evolving technological landscape.</p>
-                    <p>Our team of experts combines technical excellence with creative vision to deliver solutions that are not just functional but truly transformative.</p>
-                    <div class="row mt-4">
-                        <div class="col-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
-                                    <i class="fas fa-users text-primary"></i>
-                                </div>
-                                <div>
-                                    <h5 class="fw-bold mb-0">10 Years</h5>
-                                    <small>Experience In The Industry</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
-                                    <i class="fas fa-globe-americas text-primary"></i>
-                                </div>
-                                <div>
-                                    <h5 class="fw-bold mb-0">15+</h5>
-                                    <small>Countries Served</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
-                                    <i class="fas fa-smile text-primary"></i>
-                                </div>
-                                <div>
-                                    <h5 class="fw-bold mb-0">100%</h5>
-                                    <small>Client Retention</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- About -->
+    <section id="about">
+        <div class="about-orb"></div>
+        <div class="container" style="position:relative;z-index:1;">
+            <div class="row mb-5" data-aos="fade-up">
+                <div class="col-lg-5">
+                    <div class="section-label">About Us</div>
+                    <h2 class="section-title">Pioneering<br>Digital Innovation</h2>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="card overflow-hidden">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Our Mission</h5>
-                            <p class="card-text">To empower businesses through innovative digital solutions that drive growth, enhance user experiences, and future-proof their operations.</p>
-
-                        </div>
-                    </div>
+                <div class="col-lg-6 offset-lg-1 d-flex align-items-end">
+                    <p class="section-desc">Founded in 2015, Sacbe has been at the forefront of digital transformation, helping businesses of all sizes navigate the evolving technological landscape.</p>
+                </div>
+            </div>
+            <div class="stats-strip" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-item">
+                    <div class="num">10+</div>
+                    <p>Years in the industry</p>
+                </div>
+                <div class="stat-item">
+                    <div class="num">15+</div>
+                    <p>Countries served</p>
+                </div>
+                <div class="stat-item">
+                    <div class="num">100%</div>
+                    <p>Client retention rate</p>
+                </div>
+            </div>
+            <div class="row" data-aos="fade-up" data-aos-delay="150">
+                <div class="col-lg-6">
+                    <p style="color:var(--muted);font-size:.9rem;line-height:1.8;margin:0;">Our team combines technical excellence with creative vision to deliver solutions that are not just functional but truly transformative. We partner with clients to future-proof their operations and enhance every digital touchpoint.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="py-5">
+    <!-- Contact -->
+    <section id="contact">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card p-4 p-md-5">
-                        <div class="row">
-                            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                                <h2 class="fw-bold mb-4">Ready to <span class="gradient-text">Transform</span> Your Business?</h2>
-                                <p class="mb-4">Let's discuss how we can help you achieve your digital goals. Fill out the form or contact us directly.</p>
-                                <div class="mb-4">
-
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
-                                            <i class="fas fa-phone-alt text-primary"></i>
-                                        </div>
-                                        <div>
-                                            <h6 class="fw-bold mb-0">Call Us</h6>
-                                            <small>+1 (312) 772-6712</small>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
-                                            <i class="fas fa-map-marker-alt text-primary"></i>
-                                        </div>
-                                        <div>
-                                            <h6 class="fw-bold mb-0">Mail</h6>
-                                            <small>1350 N Wells Suite A-216 Chicago, IL 60610</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="social-icons">
-
-                                    <a href="https://www.instagram.com/sacbe230/" class="text-decoration-none me-3"><i class="fab fa-instagram"></i></a>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6" data-aos="fade-left">
-                                <form name="contact" method="POST" data-netlify="true">
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Full Name</label>
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email Address</label>
-                                        <input type="email" name="email"  class="form-control" id="email" placeholder="Enter your email">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Phone Number</label>
-                                        <input type="tel" name="phone" class="form-control" id="phone" placeholder="Enter your phone">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="service" class="form-label">Service Interested In</label>
-                                        <select class="form-select" id="service"  name="services[]" multiple>
-                                            <option>Select a service</option>
-                                            <option value="Web Development">Web Development</option>
-                                            <option value="App Development">App Development</option>
-                                           <option value="Digital Marketing">Digital Marketing</option>
-                                            <option value="UI/UX Design">UI/UX Design</option>
-                                           <option value="AI Integration">AI Integration</option>
-                                            <option value="Cloud Solutions">Cloud Solutions</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="message" class="form-label">Message</label>
-                                        <textarea class="form-control" id="message" rows="3" name="message" placeholder="Tell us about your project"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary w-100">Submit Request</button>
-                                </form>
-                            </div>
+            <div class="section-label" data-aos="fade-up">Contact</div>
+            <div class="contact-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-info">
+                    <h2>Ready to Transform<br><span style="color:var(--accent-light)">Your Business?</span></h2>
+                    <p>Let's discuss how we can help you achieve your digital goals. Fill out the form or reach us directly.</p>
+                    <div class="contact-detail">
+                        <div class="c-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <h6>Call Us</h6>
+                            <small>+1 (312) 772-6712</small>
                         </div>
                     </div>
+                    <div class="contact-detail">
+                        <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h6>Address</h6>
+                            <small>1446 N Wells, Chicago, IL 60610</small>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="https://www.instagram.com/sacbe230/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <form name="contact" method="POST" data-netlify="true">
+                        <div class="form-grp">
+                            <label class="form-lbl">Full Name</label>
+                            <input type="text" name="name" class="form-fld" placeholder="Your name">
+                        </div>
+                        <div class="form-grp">
+                            <label class="form-lbl">Email Address</label>
+                            <input type="email" name="email" class="form-fld" placeholder="your@email.com">
+                        </div>
+                        <div class="form-grp">
+                            <label class="form-lbl">Phone Number</label>
+                            <input type="tel" name="phone" class="form-fld" placeholder="+1 (xxx) xxx-xxxx">
+                        </div>
+                        <div class="form-grp">
+                            <label class="form-lbl">Service (select one or more)</label>
+                            <select name="services[]" class="form-fld" multiple>
+                                <option value="Web Development">Web Development</option>
+                                <option value="App Development">App Development</option>
+                                <option value="Digital Marketing">Digital Marketing</option>
+                                <option value="UI/UX Design">UI/UX Design</option>
+                                <option value="AI Integration">AI Integration</option>
+                                <option value="Digital Design">Digital Design</option>
+                            </select>
+                        </div>
+                        <div class="form-grp">
+                            <label class="form-lbl">Message</label>
+                            <textarea name="message" class="form-fld" rows="4" placeholder="Tell us about your project"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Submit Request</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Newsletter Section -->
-
 
     <!-- Footer -->
-    <footer class="py-5">
+    <footer>
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-5">
                 <div class="col-lg-4">
-                    <a class="navbar-brand fw-bold gradient-text mb-3 d-inline-block" href="#">Sacbe</a>
-                    <p class="mb-3">Pushing the boundaries of digital innovation to create transformative experiences that drive business success.</p>
-
+                    <div class="footer-brand">Sacbe</div>
+                    <p>Pushing the boundaries of digital innovation to create transformative experiences that drive business success.</p>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <h5 class="fw-bold mb-3">Services</h5>
-                    <ul class="list-unstyled">
-
-                        <li class="mb-2"><a href="#work" class="text-decoration-none">Web Development</a></li>
-                        <li class="mb-2"><a href="#work" class="text-decoration-none">App Development</a></li>
-                        <li class="mb-2"><a href="#work" class="text-decoration-none">Digital Marketing</a></li>
-                        <li class="mb-2"><a href="#work" class="text-decoration-none">UI/UX Design</a></li>
-                        <li class="mb-2"><a href="#work" class="text-decoration-none">AI Integration</a></li>
-
+                    <p class="footer-heading">Services</p>
+                    <ul class="footer-links">
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#services">App Development</a></li>
+                        <li><a href="#services">Digital Marketing</a></li>
+                        <li><a href="#services">UI/UX Design</a></li>
+                        <li><a href="#services">AI Integration</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <h5 class="fw-bold mb-3">Company</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#about" class="text-decoration-none">About Us</a></li>
-
+                    <p class="footer-heading">Company</p>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#work">Case Studies</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="fw-bold mb-3">Resources</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#work" class="text-decoration-none">Case Studies</a></li>
-
-                    </ul>
-                </div>
-
             </div>
-            <hr class="my-4">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2025 Sacbe. All rights reserved.</p>
-                </div>
-
+            <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <p>&copy; 2026 Sacbe. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="btn btn-primary btn-lg rounded-circle back-to-top" style="position: fixed; bottom: 20px; right: 20px; display: none;">
+    <!-- Back to top -->
+    <a href="#" class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </a>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS Animation -->
+    <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Custom JS -->
+
     <script>
-        // Initialize AOS animation
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
+        AOS.init({ duration: 700, easing: 'ease-out', once: true, offset: 60 });
 
-        // Dark mode toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const htmlElement = document.documentElement;
+        // Theme toggle
+        const html = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon   = document.getElementById('themeIcon');
 
-        // Check for saved user preference
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        if (currentTheme === 'light') {
-            htmlElement.setAttribute('data-bs-theme', 'light');
-            darkModeToggle.checked = false;
+        function applyTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', theme);
         }
 
-        darkModeToggle.addEventListener('change', function() {
-            if (this.checked) {
-                htmlElement.setAttribute('data-bs-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                htmlElement.setAttribute('data-bs-theme', 'light');
-                localStorage.setItem('theme', 'light');
-            }
+        applyTheme(localStorage.getItem('theme') || 'dark');
+
+        themeToggle.addEventListener('click', () => {
+            applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
         });
 
-        // Back to top button
-        const backToTopButton = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopButton.style.display = 'block';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
-        });
+        // Navbar scroll state
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
 
-        backToTopButton.addEventListener('click', function(e) {
+        // Back to top
+        const btt = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            btt.classList.toggle('show', window.scrollY > 400);
+        }, { passive: true });
+        btt.addEventListener('click', e => {
             e.preventDefault();
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // 3D Chart
-        const ctx = document.getElementById('performanceChart').getContext('2d');
-        const performanceChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                datasets: [{
-                    label: 'Client Growth',
-                    data: [45, 78, 66, 95],
-                    backgroundColor: 'rgba(110, 72, 170, 0.8)',
-                    borderColor: 'rgba(110, 72, 170, 1)',
-                    borderWidth: 1,
-                    borderRadius: 10
-                }, {
-                    label: 'Revenue Increase',
-                    data: [30, 52, 74, 88],
-                    backgroundColor: 'rgba(71, 118, 230, 0.8)',
-                    borderColor: 'rgba(71, 118, 230, 1)',
-                    borderWidth: 1,
-                    borderRadius: 10
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Annual Performance Metrics',
-                        font: {
-                            size: 16
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        },
-                        ticks: {
-                            color: '#e0e0e0'
-                        }
-                    },
-                    x: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        },
-                        ticks: {
-                            color: '#e0e0e0'
-                        }
-                    }
-                }
-            }
-        });
-
-        // Update chart theme when dark/light mode changes
-        darkModeToggle.addEventListener('change', function() {
-            if (this.checked) {
-                performanceChart.options.scales.x.grid.color = 'rgba(255, 255, 255, 0.1)';
-                performanceChart.options.scales.y.grid.color = 'rgba(255, 255, 255, 0.1)';
-                performanceChart.options.scales.x.ticks.color = '#e0e0e0';
-                performanceChart.options.scales.y.ticks.color = '#e0e0e0';
-            } else {
-                performanceChart.options.scales.x.grid.color = 'rgba(0, 0, 0, 0.1)';
-                performanceChart.options.scales.y.grid.color = 'rgba(0, 0, 0, 0.1)';
-                performanceChart.options.scales.x.ticks.color = '#333';
-                performanceChart.options.scales.y.ticks.color = '#333';
-            }
-            performanceChart.update();
-        });
+        // Parallax orbs on scroll
+        const orb1 = document.getElementById('orb1');
+        const orb2 = document.getElementById('orb2');
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            orb1.style.transform = `translateY(${y * 0.25}px)`;
+            orb2.style.transform = `translateY(${y * -0.15}px)`;
+        }, { passive: true });
     </script>
 </body>
 </html>
